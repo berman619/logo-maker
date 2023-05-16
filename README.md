@@ -6,6 +6,8 @@
 ## Description 
 This is a command line application that allows users to generate SVG logos with their chosen shapes and texts. With this Logo Maker CLI, you can select a shape (Triangle, Circle, or Square), choose a color for the shape, input a text (maximum of 3 characters), and select a color for the text. The application generates an SVG file (`logo.svg`) with the specified configurations.
 
+Here is a [video](https://drive.google.com/file/d/1wcMYAFkXGyB-M_iOYTGKMzcq5sb6tTN4/view?usp=sharing) of the application being used and the Jest testing suite being run. 
+
 ## Table of Contents 
 - [Usage](#usage)
 - [Contributing](#contributing)
@@ -31,7 +33,7 @@ After the logo has been created, the SVG file (`logo.svg`) will be saved in the 
 Please send a message to me on [GitHub](www.github.com/berman619) or send an e-mail at zachhberger@gmail.com if you are interested in contributing.
 
 ## Tests
-There is a test file included in this repository. To use it, run `npm install jest` on the c
+There is a test file included in this repository. To use it, run `npm install jest`, and then `npm test`. 
 
 ## License
 This project is licensed under the terms of the [MIT](https://opensource.org/licenses/MIT) license.
