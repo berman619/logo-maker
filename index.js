@@ -36,10 +36,16 @@ inquirer.prompt([
       when: (answers) => answers.shapeColor === 'Custom',
     },
     {
-    type: 'input',
-    name: 'logoText',
-    message: 'Enter the text (max. 3 characters) for the logo:'
-    }
+      type: 'input',
+      name: 'logoText',
+      message: 'Enter the text (max. 3 characters) for the logo:',
+      validate: (input) => {
+        if (input.length <= 3) {
+          return true;
+        }
+        return 'The logo text can not be more than 3 characters.';
+      },
+    },
   ])
   .then((answers) => {
     const { shapeChoice, textColor, customTextColor, shapeColor, customShapeColor, logoText } = answers;
@@ -76,7 +82,7 @@ inquirer.prompt([
         if (err) {
           console.error('An error occurred creating the SVG file:', err);
         } else {
-          console.log('Generated logo.svg');
+          console.log('Successfully generated a logo!');
         }
       });
     });
