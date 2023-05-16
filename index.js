@@ -2,8 +2,7 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const { Square, Circle, Triangle } = require('./lib/shapes');
 
-inquirer
-  .prompt([
+inquirer.prompt([
     {
       type: 'list',
       name: 'shapeChoice',
@@ -14,7 +13,7 @@ inquirer
       type: 'list',
       name: 'textColor',
       message: 'Select a text color:',
-      choices: ['Red', 'Green', 'Blue', 'Yellow', 'Custom'],
+      choices: ['Red', 'Green', 'Blue', 'Yellow', 'Black', 'White', 'Custom'],
     },
     {
       type: 'input',
@@ -27,7 +26,7 @@ inquirer
       type: 'list',
       name: 'shapeColor',
       message: 'Select a shape color:',
-      choices: ['Red', 'Green', 'Blue', 'Yellow', 'Custom'],
+      choices: ['Red', 'Green', 'Blue', 'Yellow', 'Black', 'White', 'Custom'],
     },
     {
       type: 'input',
@@ -56,5 +55,12 @@ inquirer
     shapeInstance.setColor(selectedShapeColor);
 
     const svgString = shapeInstance.render();
-    
-  });
+
+    fs.writeFile('logo.svg', svgString, (err) => {
+        if (err) {
+          console.error('An error occurred creating the SVG file:', err);
+        } else {
+          console.log('Generated logo.svg');
+        }
+      });
+    });
