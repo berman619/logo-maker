@@ -35,9 +35,14 @@ inquirer.prompt([
       //only display this question if previous answer is custom
       when: (answers) => answers.shapeColor === 'Custom',
     },
+    {
+    type: 'input',
+    name: 'logoText',
+    message: 'Enter the text (max. 3 characters) for the logo:'
+    }
   ])
   .then((answers) => {
-    const { shapeChoice, textColor, customTextColor, shapeColor, customShapeColor } = answers;
+    const { shapeChoice, textColor, customTextColor, shapeColor, customShapeColor, logoText } = answers;
 
     let shapeInstance;
 
@@ -49,10 +54,21 @@ inquirer.prompt([
       shapeInstance = new Square();
     }
 
+    const colorMap = {
+        'Red': '#FF0000',
+        'Green': '#008000',
+        'Blue': '#0000FF',
+        'Yellow': '#FFFF00',
+        'Black': '#000000',
+        'White': '#FFFFFF',
+    };
+
     const selectedTextColor = textColor === 'Custom' ? customTextColor : textColor;
     const selectedShapeColor = shapeColor === 'Custom' ? customShapeColor : shapeColor;
 
     shapeInstance.setColor(selectedShapeColor);
+    shapeInstance.setText(logoText);
+    shapeInstance.setTextColor(selectedTextColor);
 
     const svgString = shapeInstance.render();
 
